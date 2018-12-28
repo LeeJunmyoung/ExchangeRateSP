@@ -2,9 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
 <title>Hello</title>
 </head>
 <body>
-	<h1>hello</h1>
+	<div class="exchange-form">
+	<header class="header">
+		<div class="header__menus header__menus-seleted">
+			<a href="#">
+			<i class="fas fa-exchange-alt"></i>
+			<span class="header__menus-tile"> 환 율 </span>
+			</a>
+		</div>
+	</header>
+	<main class="exchange-main">
+		<div class="exchange__items">
+			<div class="exchange__item">
+				<span class="exchange__item-title">송금국가 : </span>
+				<span class="exchange__item-value">미국 (USD) </span>
+			</div>
+			<div class="exchange__item">
+				<span class="exchange__item-title">수취국가 : </span>
+				<select class="exchange__item-value"> 
+					<option selected="selected">한국(KRW)</option>
+				</select>
+			</div>
+			<div class="exchange__item">
+				<span class="exchange__item-title">환율 : </span>
+				<span class="exchange__item-value">1,119.93KRW/USD</span>
+			</div>
+			<div class="exchange__item">
+				<span class="exchange__item-title">송금액 : </span>
+				<input type="text">
+			</div>
+		</div>
+	</main>
+	</div>
 </body>
 </html>

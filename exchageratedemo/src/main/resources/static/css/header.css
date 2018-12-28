@@ -1,0 +1,29 @@
+.header{
+	width:100%;
+	display: flex;
+	justify-content: flex-start;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	
+}
+.header .header__menus{
+	display: flex;
+    align-items: center;
+	color: #19CD61;
+	padding:10px;
+	
+	border-right: 1px solid rgba(0,0,0,0.3);
+	
+}
+
+
+
+
+
+.header__menus-tile,
+.header__menus i{
+	color: #19CD61;
+}
+
+.header__menus a{
+	text-decoration: none;
+}

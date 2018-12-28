@@ -1,0 +1,12 @@
+.exchange-main{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.exchange__items{
+	display: flex;
+	flex-direction: column;
+	
+	padding: 10px;
+}
