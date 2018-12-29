@@ -1,13 +1,13 @@
-package com.exchage.exchageratedemo;
+package com.exchange.exchangeratedemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExchageratedemoApplication {
+public class ExchangeratedemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExchageratedemoApplication.class, args);
+		SpringApplication.run(ExchangeratedemoApplication.class, args);
 	}
 
 }
