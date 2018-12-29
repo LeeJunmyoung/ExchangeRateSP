@@ -65,41 +65,43 @@ public class CurrencyLayer {
 		this.quotes = quotes;
 	}
 	
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	public class Quotes{
+		@JsonProperty("USDKRW")
+		private String usdkrw;
+		
+		@JsonProperty("USDJPY")
+		private String usdjpy;
+		
+		@JsonProperty("USDPHP")
+		private String udsphp;
+
+		public String getUsdkrw() {
+			return usdkrw;
+		}
+
+		public void setUsdkrw(String usdkrw) {
+			this.usdkrw = usdkrw;
+		}
+
+		public String getUsdjpy() {
+			return usdjpy;
+		}
+
+		public void setUsdjpy(String usdjpy) {
+			this.usdjpy = usdjpy;
+		}
+
+		public String getUdsphp() {
+			return udsphp;
+		}
+
+		public void setUdsphp(String udsphp) {
+			this.udsphp = udsphp;
+		}
+
+	}
+	
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-class Quotes{
-	@JsonProperty("USDKRW")
-	private String usdkrw;
-	
-	@JsonProperty("USDJPY")
-	private String usdjpy;
-	
-	@JsonProperty("USDPHP")
-	private String udsphp;
 
-	public String getUsdkrw() {
-		return usdkrw;
-	}
-
-	public void setUsdkrw(String usdkrw) {
-		this.usdkrw = usdkrw;
-	}
-
-	public String getUsdjpy() {
-		return usdjpy;
-	}
-
-	public void setUsdjpy(String usdjpy) {
-		this.usdjpy = usdjpy;
-	}
-
-	public String getUdsphp() {
-		return udsphp;
-	}
-
-	public void setUdsphp(String udsphp) {
-		this.udsphp = udsphp;
-	}
-
-}
