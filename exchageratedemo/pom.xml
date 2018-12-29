@@ -9,10 +9,10 @@
 		<version>2.1.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.exchage</groupId>
-	<artifactId>exchageratedemo</artifactId>
+	<groupId>com.exchange</groupId>
+	<artifactId>exchangeratedemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>exchageratedemo</name>
+	<name>exchangeratedemo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -40,6 +40,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+		   <groupId>org.json</groupId>
+		   <artifactId>json</artifactId>
+		   <version>20160810</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
