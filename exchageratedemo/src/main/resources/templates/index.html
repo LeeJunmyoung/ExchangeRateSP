@@ -8,7 +8,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript">
-var globalExchange;
+	var globalExchange;
 
 	function initExchange() {
 		var xhr = new XMLHttpRequest();
@@ -21,18 +21,46 @@ var globalExchange;
 					var respBody = JSON.parse(xhr.responseText);
 					var bodyQuotes = respBody.quotes;
 					console.log(respBody);
-					document.querySelector('#exchange-money').innerText=bodyQuotes.USDKRW+"KRW/USD";
 					globalExchange=bodyQuotes;
+					modifyMoney();
 				} else {
 					console.log('[' + xhr.status + ']: ' + xhr.statusText);
 				}
 			}
 		};
 	}
+	
+	function toFixedMoneyNComma(countryMoney){
+		var respMoneyArr = Number(countryMoney).toFixed(2).split(".");
+		var essence = respMoneyArr[0];
+		var decimalPoint = respMoneyArr[1];
+
+		var commaEssence = essence.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+		return commaEssence+"."+decimalPoint;
+	}
+
+	function selectedCountryMoney(countryMoney){
+		var query = "USD"+countryMoney;
+		if(globalExchange.hasOwnProperty(query)){
+			return globalExchange[query];
+		}else{
+			alert("해당국가의 환율을 조회 할 수 없습니다.");
+			return 0;
+		}
+	}
+
+	function modifyMoney(){
+		var country = document.querySelector("#country-selector").value;
+		var money = selectedCountryMoney(country);
+		
+		document.querySelector('#exchange-money').innerText=toFixedMoneyNComma(money)+" "+country+"/USD";
+	}
+	initExchange();
 </script>
 <title>Hello</title>
 </head>
-<body onload="initExchange()">
+<body >
 	<div class="exchange-form">
 		<header class="header">
 			<div class="header__menus header__menus-seleted">
@@ -48,14 +76,16 @@ var globalExchange;
 					class="exchange__item-value">미국 (USD) </span>
 			</div>
 			<div class="exchange__item">
-				<span class="exchange__item-title">수취국가 : </span> <select
-					class="exchange__item-value">
-					<option selected="selected">한국(KRW)</option>
+				<span class="exchange__item-title">수취국가 : </span> 
+				<select class="exchange__item-value" id="country-selector" onchange="modifyMoney()" >
+					<option selected="selected" value="KRW">한국(KRW)</option>
+					<option value="JPY">일본(JPY)</option>
+					<option value="PHP">필리핀(PHP)</option>
 				</select>
 			</div>
 			<div class="exchange__item">
 				<span class="exchange__item-title">환율 : </span> 
-				<span class="exchange__item-value" id="exchange-money">1,119.93KRW/USD</span>
+				<span class="exchange__item-value" id="exchange-money"></span>
 			</div>
 			<div class="exchange__item">
 				<span class="exchange__item-title">송금액 : </span> <input type="text">
