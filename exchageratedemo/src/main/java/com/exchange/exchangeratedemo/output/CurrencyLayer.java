@@ -74,7 +74,7 @@ public class CurrencyLayer {
 		private String usdjpy;
 		
 		@JsonProperty("USDPHP")
-		private String udsphp;
+		private String usdphp;
 
 		public String getUsdkrw() {
 			return usdkrw;
@@ -92,13 +92,15 @@ public class CurrencyLayer {
 			this.usdjpy = usdjpy;
 		}
 
-		public String getUdsphp() {
-			return udsphp;
+		public String getUsdphp() {
+			return usdphp;
 		}
 
-		public void setUdsphp(String udsphp) {
-			this.udsphp = udsphp;
+		public void setUsdphp(String usdphp) {
+			this.usdphp = usdphp;
 		}
+
+		
 
 	}
 	
