@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 @Service
 public class CommonUtil {
 
-	protected static Logger logger = LoggerFactory.getLogger("CommonUtil");
+	protected static Logger logger = LoggerFactory.getLogger(CommonUtil.class);
 
 	public static JSONObject serviceInterfaceRequest(String urlFullStr, Object reqParam, HttpMethod sendType)
 			throws IOException, JSONException {

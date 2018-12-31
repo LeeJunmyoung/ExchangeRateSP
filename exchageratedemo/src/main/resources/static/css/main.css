@@ -7,6 +7,9 @@
 .exchange__items{
 	display: flex;
 	flex-direction: column;
-	
 	padding: 10px;
+}
+
+.exchange__warning{
+	color:red;
 }
