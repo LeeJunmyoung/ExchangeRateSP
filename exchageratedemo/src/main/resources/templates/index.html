@@ -31,8 +31,9 @@
 	}
 	
 	function toFixedMoneyNComma(countryMoney){
-		var respMoneyArr = Number(countryMoney).toFixed(3).split(".");
+		var respMoneyArr = Number(countryMoney).toFixed(4).split(".");
 		var essence = respMoneyArr[0];
+		console.log(respMoneyArr);
 		var decimalPoint = respMoneyArr[1].substring(0,2);
 		
 		var commaEssence = essence.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -59,7 +60,7 @@
 	
 	function calculate(){
 		var regexp = /^[0-9]*$/
-		var value = document.querySelector("#usd-money").value;
+		var value = document.querySelector("#usd-money").value.replace(/,/gi,"");
 		
 		var messageDiv = document.querySelector("#exchange-message");
 		if( !regexp.test(value)||Number(value)<0||Number(value)>10000 ) {
@@ -81,8 +82,8 @@
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === XMLHttpRequest.DONE) {
 					if (xhr.status === 200) {
-						var respBody = JSON.parse(xhr.responseText);
-						messageDiv.innerText=respBody + " " + sendJson.division +"을 송금하셨습니다.";
+				
+						messageDiv.innerText=xhr.responseText+" "+sendJson.division +"을 송금하셨습니다.";
 						messageDiv.classList.remove("exchange__warning");
 						
 					} else {
@@ -92,10 +93,13 @@
 			};
 
 		}
-
-
 	}
 	
+	function addComma(num) {
+		  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		  num.value=num.value.replace(/,/gi,"").replace(regexp, ',');
+	}
+
 </script>
 <title>Hello</title>
 </head>
@@ -127,7 +131,7 @@
 				<span class="exchange__item-value" id="exchange-money"></span>
 			</div>
 			<div class="exchange__item">
-				<span class="exchange__item-title">송금액 : </span> <input type="text" id="usd-money">
+				<span class="exchange__item-title">송금액 : </span> <input type="text" id="usd-money" onkeyup="addComma(this)">
 				<span class="exchange__item">USD</span>
 			</div>
 			<div class="exchange_item">

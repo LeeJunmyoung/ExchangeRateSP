@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.slf4j.Logger;
@@ -55,14 +56,16 @@ public class ExchangeService {
 		nf.setMaximumFractionDigits(2);
 		nf.setRoundingMode(RoundingMode.DOWN);
 		nf.setGroupingUsed(true);
-		
-		BigDecimal countryMoneyInt =   new BigDecimal(nf.format(new BigDecimal(countryMoney)).replaceAll(",", ""));
+
+		BigDecimal countryMoneyInt = new BigDecimal(nf.format(new BigDecimal(countryMoney)).replaceAll(",", ""));
 		BigDecimal dollarInt = new BigDecimal(input.getDollar());
-		
-		logger.info("[dollar]       : "+dollarInt.toString());
-		logger.info("[countryMoney] : "+countryMoneyInt.toString());
-		
-		return dollarInt.multiply(countryMoneyInt).toString();
+
+		logger.info("[dollar]       : " + dollarInt.toString());
+		logger.info("[countryMoney] : " + countryMoneyInt.toString());
+
+		DecimalFormat formatter = new DecimalFormat("###,###.##");
+		System.out.println(formatter.format(dollarInt.multiply(countryMoneyInt)));
+		return formatter.format(dollarInt.multiply(countryMoneyInt));
 	}
 
 }
