@@ -60,17 +60,17 @@
 	
 	function calculate(){
 		var regexp = /^[0-9]*$/
-		var value = document.querySelector("#usd-money").value.replace(/,/gi,"");
+		var usdValue = document.querySelector("#usd-money").value.replace(/,/gi,"");
 		
 		var messageDiv = document.querySelector("#exchange-message");
-		if( !regexp.test(value)||Number(value)<0||Number(value)>10000 ) {
+		if( !regexp.test(usdValue)||Number(usdValue)<0||Number(usdValue)>10000 ) {
 			messageDiv.innerText="송금액이 바르지 않습니다.";
 			messageDiv.classList.add("exchange__warning");
 		}else{
 			
 
 			var sendJson= {
-				"dollar":value,
+				"dollar":usdValue,
 				"division":document.querySelector("#country-selector").value
 			};
 			console.log(JSON.stringify(sendJson));
@@ -113,34 +113,37 @@
 			</div>
 		</header>
 		<main class="exchange-main">
-		<div class="exchange__items">
-			<div class="exchange__item">
-				<span class="exchange__item-title">송금국가 : </span> <span
-					class="exchange__item-value">미국 (USD) </span>
+			<div class="exchange__items">
+				<div class="exchange__item">
+					<span class="exchange__item-title">송금국가 : </span> <span
+						class="exchange__item-value">미국 (USD) </span>
+				</div>
+				<div class="exchange__item">
+					<span class="exchange__item-title">수취국가 : </span> 
+					<select class="exchange__item-value" id="country-selector" onchange="modifyMoney()" >
+						<option selected="selected" value="KRW">한국(KRW)</option>
+						<option value="JPY">일본(JPY)</option>
+						<option value="PHP">필리핀(PHP)</option>
+					</select>
+				</div>
+				<div class="exchange__item">
+					<span class="exchange__item-title">환율 : </span> 
+					<span class="exchange__item-value" id="exchange-money"></span>
+				</div>
+				<div class="exchange__item">
+					<span class="exchange__item-title">송금액 : </span> <input type="text" id="usd-money" onkeyup="addComma(this)">
+					<span class="exchange__item">USD</span>
+				</div>
+				<div class="exchange__item">
+					<input type="button" value="submit" onclick="calculate()"/>
+				</div>
+				<div class="exchange__item">
+					<span class="exchange__item" id="exchange-message"></span>
+				</div>
 			</div>
-			<div class="exchange__item">
-				<span class="exchange__item-title">수취국가 : </span> 
-				<select class="exchange__item-value" id="country-selector" onchange="modifyMoney()" >
-					<option selected="selected" value="KRW">한국(KRW)</option>
-					<option value="JPY">일본(JPY)</option>
-					<option value="PHP">필리핀(PHP)</option>
-				</select>
+			<div class="exchange__items">
+
 			</div>
-			<div class="exchange__item">
-				<span class="exchange__item-title">환율 : </span> 
-				<span class="exchange__item-value" id="exchange-money"></span>
-			</div>
-			<div class="exchange__item">
-				<span class="exchange__item-title">송금액 : </span> <input type="text" id="usd-money" onkeyup="addComma(this)">
-				<span class="exchange__item">USD</span>
-			</div>
-			<div class="exchange_item">
-				<input type="button" value="submit" onclick="calculate()"/>
-			</div>
-			<div class="exchange_item">
-				<span class="exchange__item" id="exchange-message"></span>
-			</div>
-		</div>
 		</main>
 	</div>
 </body>

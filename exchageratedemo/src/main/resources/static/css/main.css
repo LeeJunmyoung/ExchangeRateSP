@@ -1,13 +1,20 @@
 .exchange-main{
 	width: 100%;
 	height: 100%;
-	
+	display: flex;
+	justify-content: space-between;
+
 }
 
 .exchange__items{
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
+	width: 50%;
+}
+
+.exchange__item{
+	margin: 5px;
 }
 
 .exchange__warning{
