@@ -63,7 +63,7 @@ public class ExchangeService {
 		logger.info("[dollar]       : " + dollarInt.toString());
 		logger.info("[countryMoney] : " + countryMoneyInt.toString());
 
-		DecimalFormat formatter = new DecimalFormat("###,###.##");
+		DecimalFormat formatter = new DecimalFormat("###,###.00");
 		System.out.println(formatter.format(dollarInt.multiply(countryMoneyInt)));
 		return formatter.format(dollarInt.multiply(countryMoneyInt));
 	}
