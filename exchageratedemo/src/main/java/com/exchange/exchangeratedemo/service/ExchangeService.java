@@ -42,6 +42,7 @@ public class ExchangeService {
 	}
 
 	public String calculateUSD(ExchangeInput input) throws Exception {
+		String resp;
 		CurrencyLayer cLayer = getRedisCurrencyLayer();
 		String countryMoney = null;
 		for (Field field : cLayer.getQuotes().getClass().getDeclaredFields()) {
@@ -64,8 +65,10 @@ public class ExchangeService {
 		logger.info("[countryMoney] : " + countryMoneyInt.toString());
 
 		DecimalFormat formatter = new DecimalFormat("###,###.00");
-		System.out.println(formatter.format(dollarInt.multiply(countryMoneyInt)));
-		return formatter.format(dollarInt.multiply(countryMoneyInt));
+		
+		resp = formatter.format(dollarInt.multiply(countryMoneyInt));
+		logger.info("[cal] : "+resp);
+		return resp;
 	}
 
 }
